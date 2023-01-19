@@ -23,8 +23,8 @@ from torch.nn import functional as F
 from typing import Optional, Iterable
 
 try:
-    from transformers import BertPreTrainedModel
-    from transformers.modeling_bert import BertOnlyMLMHead
+    from transformers.models.bert.modeling_bert import BertPreTrainedModel
+    from transformers.models.bert.modeling_bert import BertOnlyMLMHead
 
     from transformers.file_utils import ModelOutput
     from transformers.modeling_outputs import CausalLMOutput
