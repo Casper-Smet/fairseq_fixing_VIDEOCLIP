@@ -32,13 +32,13 @@ class MMPTModel(nn.Module):
     """An e2e wrapper of inference model.
     """
     @classmethod
-    def from_pretrained(cls, config, checkpoint="checkpoint_best.pt"):
+    def from_pretrained(cls, config, checkpoint="checkpoint_best.pt", prefix=""):
         import os
         from ..utils import recursive_config
         from ..tasks import Task
         config = recursive_config(config)
         mmtask = Task.config_task(config)
-        checkpoint_path = os.path.join(config.eval.save_path, checkpoint)
+        checkpoint_path = os.path.join(prefix, config.eval.save_path, checkpoint)
         mmtask.build_model(checkpoint=checkpoint_path)
         # TODO(huxu): make the video encoder configurable.
         from ..processors.models.s3dg import S3D
